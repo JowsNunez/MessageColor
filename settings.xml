@@ -1,0 +1,10 @@
+<settings>
+  <servers>
+  
+    <server>
+      <id>ossrh</id>
+      <username>${OSSHR_NAME}</username>
+      <password>${OSSHR_KEY}</password>
+    </server>
+  </servers>
+</settings>

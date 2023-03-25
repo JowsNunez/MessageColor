@@ -1,0 +1,39 @@
+#name: Maven Deploy
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  deploy:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: Checkout code
+#      uses: actions/checkout@v2
+#    - name: Set up Java
+#      uses: actions/setup-java@v1
+#      with:
+#        java-version: 11
+#    - name: Import private key
+#      run: |
+#       export GPG_TTY=$(tty)
+#       gpg --batch --import /home/runner/work/MessageColor/MessageColor/secret-key.asc
+#    - name: setup enviroment
+#      env:
+#        OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+#        OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+#        GPG_ID_KEY: ${{ secrets.GPG_ID_KEY }}
+#        GPG_PASSHPRASE: ${{ secrets.GPG_PASSHPRASE }}
+#        PASS_GITHUB: ${{ secrets.PASS_GITHUB }}
+#      run: |
+#        echo ${GITHUB_PASS}
+#        cp /home/runner/work/MessageColor/MessageColor/settings-security.xml  /home/runner/.m2/settings-security.xml
+#    - name: Build with Maven
+#      run: mvn clean install -e -X
+#    - name: Deploy to Nexus
+#
+#      run: |
+#        echo ${GPG_ID_KEY}
+#        echo ${GPG_PASSHPRASE}
+#        mvn deploy --settings settings.xml

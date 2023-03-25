@@ -1,0 +1,3 @@
+<settingsSecurity>
+  <master>${PASS_GITHUB}</master>
+</settingsSecurity>
